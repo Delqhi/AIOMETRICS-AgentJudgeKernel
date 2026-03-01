@@ -27,8 +27,8 @@ Setzt das Notebook auf `goal=custom` mit der Governance-Prompt aus `CHAT_RESPONS
 
 ```bash
 PROMPT="$(cat /Users/jeremyschulze/dev/AIOMETRICS/10-AgentJudgeKernel/CHAT_RESPONSE_CONSTITUTION.md)"
-nlm chat configure 784c4f30-b524-41d9-a0cc-3752b8303cf3 --goal custom --response-length shorter --prompt "$PROMPT"
-nlm chat configure ab67c7ae-5e83-4316-9587-83ac5fabe396 --goal custom --response-length shorter --prompt "$PROMPT"
+nlm chat configure 784c4f30-b524-41d9-a0cc-3752b8303cf3 --goal custom --response-length longer --prompt "$PROMPT"
+nlm chat configure ab67c7ae-5e83-4316-9587-83ac5fabe396 --goal custom --response-length longer --prompt "$PROMPT"
 ```
 
 ## Sync (Scope-specific)
