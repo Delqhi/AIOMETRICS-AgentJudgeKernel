@@ -31,6 +31,27 @@ nlm chat configure 784c4f30-b524-41d9-a0cc-3752b8303cf3 --goal custom --response
 nlm chat configure ab67c7ae-5e83-4316-9587-83ac5fabe396 --goal custom --response-length longer --prompt "$PROMPT"
 ```
 
+## Google-Doc-Only Kernel Migration (pro Projekt)
+Erzwingt je Projekt: `1x Master Google Doc` + `1x NotebookLM` + lokal nur `AGENTS.md`.
+
+```bash
+KERNEL_MODE=dry-run \
+PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
+PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
+/Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/gdoc-kernel-sync.sh <repo-key-or-path>
+```
+
+```bash
+KERNEL_MODE=sync \
+PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
+PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
+ENFORCE_SINGLE_SOURCE=1 \
+SYNC_NOTEBOOK=1 \
+/Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/gdoc-kernel-sync.sh <repo-key-or-path>
+```
+
 ## Sync (Scope-specific)
 ```bash
 NLM_MODE=sync NLM_SCOPE=dev NLM_FORCE_REPLACE=1 NLM_PRUNE_UNMANAGED=1 /Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/sync-notebooklm.sh 10-agent-judge-kernel
