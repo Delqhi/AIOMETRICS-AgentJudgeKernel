@@ -22,6 +22,15 @@ NLM_MODE=dry-run NLM_SCOPE=both /Users/jeremyschulze/dev/AIOMETRICS/shared/scrip
 NLM_MODE=sync NLM_SCOPE=both NLM_FORCE_REPLACE=1 NLM_PRUNE_UNMANAGED=1 /Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/sync-notebooklm.sh 10-agent-judge-kernel
 ```
 
+## Chat konfigurieren (Gesprächsziel/-stil/-rolle)
+Setzt das Notebook auf `goal=custom` mit der Governance-Prompt aus `CHAT_RESPONSE_CONSTITUTION.md`:
+
+```bash
+PROMPT="$(cat /Users/jeremyschulze/dev/AIOMETRICS/10-AgentJudgeKernel/CHAT_RESPONSE_CONSTITUTION.md)"
+nlm chat configure 784c4f30-b524-41d9-a0cc-3752b8303cf3 --goal custom --response-length shorter --prompt "$PROMPT"
+nlm chat configure ab67c7ae-5e83-4316-9587-83ac5fabe396 --goal custom --response-length shorter --prompt "$PROMPT"
+```
+
 ## Sync (Scope-specific)
 ```bash
 NLM_MODE=sync NLM_SCOPE=dev NLM_FORCE_REPLACE=1 NLM_PRUNE_UNMANAGED=1 /Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/sync-notebooklm.sh 10-agent-judge-kernel
