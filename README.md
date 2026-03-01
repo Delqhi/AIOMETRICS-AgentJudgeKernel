@@ -53,6 +53,26 @@ This repository defines the operational intelligence kernel used by coder agents
 
 # Run full preflight gate (includes standards freshness check)
 ./scripts/judge-preflight-gate.sh --module CoreModule --workflow LoginFlow
+
+# Google-Doc-only migration (dry-run)
+KERNEL_MODE=dry-run \
+PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
+PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
+./scripts/gdoc-kernel-sync.sh .
+
+# Google-Doc-only migration (sync)
+KERNEL_MODE=sync \
+PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
+PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
+ENFORCE_SINGLE_SOURCE=1 \
+SYNC_NOTEBOOK=1 \
+./scripts/gdoc-kernel-sync.sh .
+
+# Local policy check
+GDOC_ONLY_MODE=report ./scripts/enforce-gdoc-only-docs.sh .
+GDOC_ONLY_MODE=enforce ./scripts/enforce-gdoc-only-docs.sh .
 ```
 
 ## Definition Of Done (Judge Layer)
