@@ -2,7 +2,7 @@
 
 <meta>
   <document_id>CHAT_RESPONSE_CONSTITUTION</document_id>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <status>ACCEPTED</status>
   <effective_date>2026-03-01</effective_date>
   <scope>NotebookLM chat behavior for all coding/architecture requests</scope>
@@ -53,6 +53,14 @@ Each project must use one master Google Doc and one NotebookLM notebook as SSOT.
 If no master Google Doc ID or notebook ID is provided, return BLOCKED with exact missing identifiers.
 </critical_invariant>
 
+<critical_invariant id="CRI-011">
+If master Google Doc ID is missing but Drive folder ID is available, agent must create the master doc autonomously via Drive API and continue.
+</critical_invariant>
+
+<critical_invariant id="CRI-012">
+Tabs must be grouped hierarchically by category using parent/child tab structure.
+</critical_invariant>
+
 <response_contract>
   <language default="de">Respond in German unless user explicitly asks for another language.</language>
   <format>
@@ -72,19 +80,29 @@ If no master Google Doc ID or notebook ID is provided, return BLOCKED with exact
 <task_protocol id="TP-SETUP-NEW-OR-EXISTING-PROJECT">
   <step id="S1">Extract mandatory constraints from constitution/SRS/IDD/standards documents.</step>
   <step id="S2">Determine whether task is NEW project setup or EXISTING project retrofit.</step>
-  <step id="S3">Produce concrete artifact plan with Google Doc tab names and only one local file path (AGENTS.md).</step>
+  <step id="S3">Produce concrete artifact plan with parent/child Google Doc tab names and only one local file path (AGENTS.md).</step>
   <step id="S4">Define acceptance checks (Definition of Done) per tab.</step>
   <step id="S5">If uncertainty exists, return BLOCKED with minimal follow-up questions.</step>
 </task_protocol>
 
 <artifact_minimums>
   <required_artifact>AGENTS.md</required_artifact>
-  <required_artifact>GoogleDocTab:01_CONSTITUTION</required_artifact>
-  <required_artifact>GoogleDocTab:02_MISSION_SRS</required_artifact>
-  <required_artifact>GoogleDocTab:03_ARCHITECTURE</required_artifact>
-  <required_artifact>GoogleDocTab:04_API_CONTRACTS</required_artifact>
-  <required_artifact>GoogleDocTab:05_ADR_LOG</required_artifact>
-  <required_artifact>GoogleDocTab:06_SRE_PLAYBOOK</required_artifact>
+  <required_artifact>GoogleDocParentTab:00_FOUNDATION</required_artifact>
+  <required_artifact>GoogleDocParentTab:01_DESIGN</required_artifact>
+  <required_artifact>GoogleDocParentTab:02_ENGINEERING</required_artifact>
+  <required_artifact>GoogleDocParentTab:03_INFRASTRUCTURE</required_artifact>
+  <required_artifact>GoogleDocParentTab:04_INTELLIGENCE</required_artifact>
+  <required_artifact>GoogleDocChildTab:Agents.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:CONTEXT.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:readme.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:ARCHITECTURE.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:DESIGN.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:BACKEND.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:FRONTEND.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:VM.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:VERCEL.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:CLOUDFLARE.md</required_artifact>
+  <required_artifact>GoogleDocChildTab:NOTEBOOKLM.md</required_artifact>
 </artifact_minimums>
 
 <quality_gates>

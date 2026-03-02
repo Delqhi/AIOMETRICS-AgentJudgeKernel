@@ -38,6 +38,7 @@ Erzwingt je Projekt: `1x Master Google Doc` + `1x NotebookLM` + lokal nur `AGENT
 KERNEL_MODE=dry-run \
 PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
 PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+PROJECT_GOOGLE_DRIVE_FOLDER_ID="<FOLDER_ID>" \
 GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
 /Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/gdoc-kernel-sync.sh <repo-key-or-path>
 ```
@@ -46,9 +47,21 @@ GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
 KERNEL_MODE=sync \
 PROJECT_GOOGLE_DOC_ID="<DOC_ID>" \
 PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+PROJECT_GOOGLE_DRIVE_FOLDER_ID="<FOLDER_ID>" \
 GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
 ENFORCE_SINGLE_SOURCE=1 \
 SYNC_NOTEBOOK=1 \
+/Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/gdoc-kernel-sync.sh <repo-key-or-path>
+```
+
+Autonomes Erstellen der Master-Doc (wenn `DOC_ID` fehlt):
+```bash
+KERNEL_MODE=sync \
+CREATE_GOOGLE_DOC_IF_MISSING=1 \
+PROJECT_GOOGLE_DOC_TITLE="AIOMETRICS <PROJECT> Master Kernel" \
+PROJECT_GOOGLE_DRIVE_FOLDER_ID="<FOLDER_ID>" \
+PROJECT_NOTEBOOK_ID="<NOTEBOOK_ID>" \
+GOOGLE_SERVICE_ACCOUNT_KEY="/path/to/service-account.json" \
 /Users/jeremyschulze/dev/AIOMETRICS/shared/scripts/gdoc-kernel-sync.sh <repo-key-or-path>
 ```
 
