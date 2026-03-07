@@ -788,11 +788,11 @@ write_project_agents_md() {
 1. Do not create local documentation files (\`*.md\`, \`*.txt\`, \`*.docx\`) except this \`AGENTS.md\`.
 2. All documentation updates go to the single Master Google Doc via service account/API.
 3. Master Google Doc must use grouped tabs:
-   - `00_FOUNDATION`: `Agents.md`, `CONTEXT.md`, `readme.md`
-   - `01_DESIGN`: `ARCHITECTURE.md`, `DESIGN.md`
-   - `02_ENGINEERING`: `BACKEND.md`, `FRONTEND.md`
-   - `03_INFRASTRUCTURE`: `VM.md`, `VERCEL.md`, `CLOUDFLARE.md`
-   - `04_INTELLIGENCE`: `NOTEBOOKLM.md`
+   - \`00_FOUNDATION\`: \`Agents.md\`, \`CONTEXT.md\`, \`readme.md\`
+   - \`01_DESIGN\`: \`ARCHITECTURE.md\`, \`DESIGN.md\`
+   - \`02_ENGINEERING\`: \`BACKEND.md\`, \`FRONTEND.md\`
+   - \`03_INFRASTRUCTURE\`: \`VM.md\`, \`VERCEL.md\`, \`CLOUDFLARE.md\`
+   - \`04_INTELLIGENCE\`: \`NOTEBOOKLM.md\`
 4. Before architecture or code changes, query NotebookLM and require citation evidence.
 5. If citations are missing or access fails, return \`BLOCKED\` and stop.
 6. High-risk actions require explicit human approval.
